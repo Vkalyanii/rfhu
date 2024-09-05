@@ -1,0 +1,259 @@
+<mvc:View
+    controllerName="com.app.rfhu.controller.Home"
+    xmlns:unified="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:ndc="sap.ndc"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:controls="sap.viz.ui5.controls"
+    xmlns:commons="sap.suite.ui.commons"
+    xmlns:simple="sap.gantt.simple"
+    xmlns:launchpad="sap.ushell.ui.launchpad"
+    xmlns:uxap="sap.uxap"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+>
+    <Page
+        showHeader="false"
+        class="PageBackground"
+    >
+        <tnt:ToolHeader
+            id="shellLikeToolHeader"
+            visible="true"
+        >
+         <Button
+                id="idBackButtoninAdhocHuWtHuScan"
+                icon="sap-icon://nav-back"
+                press="onPressBackButtoninAdhocHuWtHuScan"
+                visible="false"
+            />
+            <Button
+                id="idBackButtoninAdhocHuWtHuDetails"
+                icon="sap-icon://nav-back"
+                press="onPressBackButtoninAdhocHuWtHuDetails"
+                visible="false"
+            />
+
+            <Title
+                text="RFUI"
+                wrapping="false"
+                id="productName"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Disappear" />
+                </layoutData>
+            </Title>
+
+            <Text
+                text="By Artihcus Global"
+                wrapping="false"
+                id="secondTitle"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="Disappear" />
+                </layoutData>
+            </Text>
+
+            <ToolbarSpacer />
+
+            <ToolbarSpacer id="spacer">
+                <layoutData>
+                    <OverflowToolbarLayoutData
+                        priority="Low"
+                        group="1"
+                    />
+                </layoutData>
+            </ToolbarSpacer>
+
+            <ToolbarSeparator>
+                <layoutData>
+                    <OverflowToolbarLayoutData group="2" />
+                </layoutData>
+            </ToolbarSeparator>
+
+            <tnt:ToolHeaderUtilitySeparator />
+
+            <ToolbarSpacer width="1.125rem" />
+
+            <Avatar
+                id="myAvatar"
+                src="test-resources/sap/tnt/images/Woman_avatar_01.png"
+                displaySize="XS"
+                press="onAvatarPressed"
+                tooltip="Profile"
+            >
+                <layoutData>
+                    <OverflowToolbarLayoutData priority="NeverOverflow" />
+                </layoutData>
+            </Avatar>
+        </tnt:ToolHeader>
+
+        <content>
+            <!-- <Button
+                id="idBackButtoninAdhocHuWtHuScan"
+                icon="sap-icon://nav-back"
+                press="onPressBackButtoninAdhocHuWtHuScan"
+                visible="false"
+            />
+            <Button
+                id="idBackButtoninAdhocHuWtHuDetails"
+                icon="sap-icon://nav-back"
+                press="onPressBackButtoninAdhocHuWtHuDetails"
+                visible="false"
+            /> -->
+
+            <IconTabBar
+                expanded="true"
+                id="IconTabBar"
+            >
+                <items>
+                    <IconTabFilter
+                        id="idHuScanning"
+                        visible="true"
+                        key="info"
+                        text="Scanning HU"
+                    >
+                        <VBox
+                            alignItems="Center"
+                            justifyContent="Center"
+                            class="centerContent"
+                        >
+                            <f:SimpleForm
+                                id="simpleForm"
+                                layout="ResponsiveGridLayout"
+                                editable="true"
+                                class="sapUiResponsiveMargin"
+                                labelSpanL="3"
+                                labelSpanM="3"
+                                emptySpanL="4"
+                                emptySpanM="4"
+                                columnsL="1"
+                                columnsM="1"
+                            >
+                                <HBox
+                                    id="_IDGenHBoxContainer"
+                                    justifyContent="Start"
+                                >
+                                    <!-- Scan HU Label -->
+                                    <Label
+                                        id="_IDGenLabel1"
+                                        text="HU :"
+                                        class="ScanHumargin"
+                                    />
+                                    <!-- Input Field -->
+                                    <Input
+                                        id="_IDGenInput1"
+                                        placeholder="Enter HU..."
+                                        class="sapUiTinyMarginBegin"
+                                    />
+                                    <!-- <ndc:BarcodeScannerButton
+                                        id="sampleBarcodeScannerButtonZebraThree"
+                                        scanSuccess="onScanSuccessThree"
+                                        scanFail="onScanErrorThree"
+                                        inputLiveUpdate="onScanLiveUpdate"
+                                        dialogTitle="Barcode Scanner Button3 Sample"
+                                        class="sampleBarcodeScannerButtonWithZebraEB"
+                                        
+                                    /> -->
+                                    <!-- Barcode Scan Button -->
+                                    <Button
+                                        id="_IDGenButton11"
+                                        icon="sap-icon://bar-code"
+                                        press="Onpressscan"
+                                    />
+                                    <!-- Submit Button -->
+                                    <Button
+                                        id="idSubmitInAdhocHuWt"
+                                        text="Submit"
+                                        press="onPressSubmitInAdhocHuWt"
+                                    />
+                                </HBox>
+                            </f:SimpleForm>
+                        </VBox>
+                    </IconTabFilter>
+
+                    <IconTabFilter
+                        id="idHuDetails"
+                        visible="false"
+                        key="info1"
+                        text="HU Details"
+                    >
+                        <f:SimpleForm
+                            id="simpleFormHuDetails"
+                            layout="ResponsiveGridLayout"
+                            editable="true"
+                            columnsL="2"
+                            columnsM="1"
+                        >
+        
+                            <!-- HU Number Field -->
+                            <Label
+                                id="idHuScanLabel"
+                                text="HU"
+                                class="sapUiTinyMarginEnd"
+                            />
+                            <Input
+                                id="idHuNumberInput"
+                                placeholder="HU Number..."
+                                maxLength="30"
+                                width="250px"
+                            />
+
+                            <!-- SRC Field -->
+                            <Label
+                                id="idSRCBinLabel"
+                                text="SRC Bin"
+                            />
+                            <Input
+                                id="idSRCBinInput"
+                                placeholder="Enter SRC Bin..."
+                                maxLength="25"
+                                width="200px"
+                            />
+                            <!--Destination Bin Field -->
+                            <Label
+                                id="idDestBinLabel"
+                                text="Destination Bin"
+                            />
+                            <Input
+                                id="idDestBinInput"
+                                placeholder="Enter Dest Bin..."
+                                maxLength="25"
+                                width="200px"
+                            />
+                            <!--Destination hu Field -->
+
+                            <Label
+                                id="idDestHuLabel"
+                                text="Destination HU"
+                            />
+                               <VBox>
+                            <Input
+                                id="idDestHuInput"
+                                placeholder="Enter Dest HU..."
+                                maxLength="25"
+                                width="200px"
+                            />
+                            <!--hu content Button -->
+                                 <HBox>
+                            <Button
+                                id="idHuContentButton"
+                                text="HU Content"
+                                press="onHUContentPress"
+                                class="sapUiTinyMarginEnd"
+                            />
+                              </HBox>
+                          </VBox>
+                        </f:SimpleForm>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>
